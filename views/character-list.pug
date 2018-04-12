@@ -1,0 +1,69 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="description" content="")
+    meta(name="author" content="")
+    title= 'Mishinima.com - Character List'
+    
+    link(href='/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+    link(href='/vendor/font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css')
+    link(href='/css/app.css' rel='stylesheet')
+    
+  body(id='page-top')
+    nav(class='navbar navbar-expand-lg navbar-light fixed-top' id='mainNav')
+      div(class='container')
+        a(class='navbar-brand js-scroll-trigger' href='/') Home
+        button(class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation')
+          i(class='fa fa-bars')
+        div(class='collapse navbar-collapse' id='navbarResponsive')
+          ul(class='navbar-nav ml-auto')
+            li(class='navbar-item')
+              a(class='nav-link js-scroll-trigger rounded' href='#characters') Character List
+            li(class='navbar-item')
+              a(class='nav-link js-scroll-trigger rounded' href='#add') Add Character
+    header(class='masthead')
+      div(class='intro-body')
+        div(class='container')
+          div(class='row')
+            div(class='col-lg-8 mx-auto')
+              h1(class='brand-hg')='Character List'
+              hr
+              p(class='intro-text') Select a character below to view their move list and frame data
+              a(href='#characters' class='btn btn-circle js-scroll-trigger')
+                i(class='fa fa-angle-double-down animated') 
+    section(id='characters' class='content-section text-center')
+      div(class='container')
+        div(class='row')
+          div(class='col-lg-8 mx-auto')
+            h2='Character List'
+            each val in characters
+              a(class=' d-flex justify-content-between align-items-center btn btn-default rounded mb-2' href='/character/'+val.id)
+                span=val.name
+                span(class='badge badge-primary')=val.moves.length
+    section(id='add' class='content-section text-center')
+      div(class='container')
+        div(class='row')
+          div(class='col-lg-8 mx-auto')
+            h1 Add Character
+            form(id='create-character' name='create-character' enctype='text/plain')
+              div(class='form-group')
+                input(name='name' class='form-control' type='text' placeholder='Character Name' required)
+              div(class='form-group')
+                textarea(name='description' class='form-control' rows='2' placeholder='Character Description')
+              div(class='form-group')
+                input(name='portrait' class='form-control' type='text' placeholder='Character Portrait Path')
+              div(class='form-group')
+                textarea(name='moves' class='form-control' rows='3' placeholder='Moves JSON' required)
+              button(class='btn btn-primary form-control p-3 rounded' type='submit') Add Character
+    footer
+      div(class='container text-center')
+        p='Mishinima is copyright 2018, frame data from rbnorway.org'
+           
+    script(src='/vendor/jquery/jquery.min.js')
+    script(src='/vendor/bootstrap/js/bootstrap.bundle.min.js')
+    script(src='/vendor/jquery-easing/jquery.easing.min.js')
+    script(src='/js/app.js')
+    script(src='/js/character-list.js')

@@ -1,0 +1,84 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="description" content="")
+    meta(name="author" content="")
+    title= 'Mishinima.com - '+character.name
+    
+    link(href='/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+    link(href='/vendor/font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css')
+    link(href='/css/app.css' rel='stylesheet')
+    
+  body(id='page-top')
+    nav(class='navbar navbar-expand-lg navbar-light fixed-top' id='mainNav')
+      div(class='container')
+        a(class='navbar-brand js-scroll-trigger' href='/') Home
+        button(class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation')
+          i(class='fa fa-bars')
+        div(class='collapse navbar-collapse' id='navbarResponsive')
+          ul(class='navbar-nav ml-auto')
+            li(class='navbar-item')
+              a(class='nav-link js-scroll-trigger rounded' href='/character') Character List
+            li(class='navbar-item')
+              a(class='nav-link js-scroll-trigger rounded' href='#moves') Move List
+    header(class='masthead')
+      if character.portrait
+        - var portrait = 'background:url('+character.portrait+') no-repeat center center fixed; background-size:cover; filter:saturate(10%)'
+        div(class='portrait' style=portrait)
+      div(class='intro-body')
+        div(class='container')
+          div(class='row')
+            div(class='col-lg-8 mx-auto')
+              if message
+                p(class='alert alert-success')=message
+              h1(class='brand-hg')=character.name
+              hr
+              if character.description
+                p(class='intro-text')=character.description
+                p(class='intro-text text-muted') descriptions from #[a(href='http://wikipedia.org' target='_blank') wikipedia.org]
+              a(href='#moves' class='btn btn-circle js-scroll-trigger')
+                i(class='fa fa-angle-double-down animated') 
+    section(id='moves' class='content-section text-center')
+      div(class='container')
+        div(class='row')
+          div(class='col-lg-8 mx-auto')
+            h2='Move List'
+            //table data
+            table(class='table table-sm' cellpadding='0' cellspacing='0')
+              thead(class='')
+                tr
+                  th(scope='col') Move
+                  th(scope='col') Hit
+                  th(scope='col') Damage
+                  th(scope='col') Speed
+                  th(scope='col') +Block
+                  th(scope='col') +Hit
+                  th(scope='col') +CH
+                  th(scope='col') Notes
+              tbody
+                each val in character.moves
+                  tr
+                    th(scope='row')=val.notation
+                    td=val.hit_level
+                    td=val.damage
+                    td=val.speed
+                    td=val.on_block
+                    td=val.on_hit
+                    td=val.on_ch
+                    td=val.notes
+            a(class='btn btn-danger form-control p-3 rounded' href='/del/character/'+character.id) Delete Character
+    footer
+      div(class='container text-center')
+        p Mishinima is copyright 2018, frame data from #[a(href='http://rbnorway.org' target='_blank') rbnorway.org]
+   
+        
+    <!-- Bootstrap core JavaScript -->
+    script(src='/vendor/jquery/jquery.min.js')
+    script(src='/vendor/bootstrap/js/bootstrap.bundle.min.js')
+    <!-- Plugin JavaScript -->
+    script(src='/vendor/jquery-easing/jquery.easing.min.js')
+    <!-- Custom scripts for this template -->
+    script(src='/js/app.js')

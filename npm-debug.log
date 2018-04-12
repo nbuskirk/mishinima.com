@@ -1,0 +1,21 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'cache', 'clean', '-f' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 warn using --force I sure hope you know what you are doing.
+5 error Error: EACCES, unlink '/home/nbuskirk/.npm/babel-runtime/6.22.0/package.tgz'
+5 error  { [Error: EACCES, unlink '/home/nbuskirk/.npm/babel-runtime/6.22.0/package.tgz']
+5 error   errno: 3,
+5 error   code: 'EACCES',
+5 error   path: '/home/nbuskirk/.npm/babel-runtime/6.22.0/package.tgz' }
+6 error Please try running this command again as root/Administrator.
+7 error System Linux 4.4.0-43-Microsoft
+8 error command "/usr/bin/nodejs" "/usr/bin/npm" "cache" "clean" "-f"
+9 error cwd /mnt/c/Sites/mishinima.com
+10 error node -v v0.10.25
+11 error npm -v 1.3.10
+12 error path /home/nbuskirk/.npm/babel-runtime/6.22.0/package.tgz
+13 error code EACCES
+14 error errno 3
+15 error stack Error: EACCES, unlink '/home/nbuskirk/.npm/babel-runtime/6.22.0/package.tgz'
+16 verbose exit [ 3, true ]
